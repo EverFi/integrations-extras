@@ -2,11 +2,12 @@ version: "3"
 
 services:
   logstash:
-    image: docker.elastic.co/logstash/logstash:7.0.0
+    image: docker.elastic.co/logstash/logstash:7.7.0
     environment:
       - HTTP_HOST="0.0.0.0"
       - XPACK_MONITORING_ENABLED="false"
       - PATH_CONFIG=""
+      - QUEUE_TYPE="persisted"
     ports:
       - 9600:9600
     volumes:

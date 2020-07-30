@@ -51,3 +51,6 @@ logstash.pipeline.plugins.outputs.events.duration_in_millis,gauge,,millisecond,,
 logstash.pipeline.plugins.filters.events.in,gauge,,,,Number of events into the filter plugin.,0,logstash,filters events in
 logstash.pipeline.plugins.filters.events.out,gauge,,,,Number of events out from the filter plugin.,0,logstash,filters events out
 logstash.pipeline.plugins.filters.events.duration_in_millis,gauge,,millisecond,,Duration of events in the filter plugin.,0,logstash,filters events duration
+logstash.pipeline.queue.events_count,gauge,,,,Current number of events in the persisted queue.,0,logstash,persisted queue events count
+logstash.pipeline.queue.queue_size_in_bytes,gauge,,,,Current queue size in bytes of the persisted queue.,0,logstash,persisted queue queue size byter
+logstash.pipeline.queue.max_queue_size_in_bytes,gauge,,,,Persisted queue max size in bytes,0,logstash,persisted queue max size

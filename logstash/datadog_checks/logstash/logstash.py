@@ -77,6 +77,9 @@ class LogstashCheck(AgentCheck):
         "logstash.pipeline.events.filtered": ("gauge", "events.filtered"),
         "logstash.pipeline.reloads.successes": ("gauge", "reloads.successes"),
         "logstash.pipeline.reloads.failures": ("gauge", "reloads.failures"),
+        "logstash.pipeline.queue.events_count": ("gauge", "queue.events_count"),
+        "logstash.pipeline.queue.queue_size_in_bytes": ("gauge", "queue.queue_size_in_bytes"),
+        "logstash.pipeline.queue.max_queue_size_in_bytes": ("gauge", "queue.max_queue_size_in_bytes"),
     }
 
     PIPELINE_INPUTS_METRICS = {
