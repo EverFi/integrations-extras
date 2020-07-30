@@ -77,6 +77,9 @@ class LogstashCheck(AgentCheck):
         "logstash.pipeline.events.filtered": ("gauge", "events.filtered"),
         "logstash.pipeline.reloads.successes": ("gauge", "reloads.successes"),
         "logstash.pipeline.reloads.failures": ("gauge", "reloads.failures"),
+        "logstash.pipeline.queue.events_count": ("gauge", "queue.events_count"),
+        "logstash.pipeline.queue.queue_size_in_bytes": ("gauge", "queue.queue_size_in_bytes"),
+        "logstash.pipeline.queue.max_queue_size_in_bytes": ("gauge", "queue.max_queue_size_in_bytes"),
     }
 
     PIPELINE_INPUTS_METRICS = {
@@ -97,12 +100,6 @@ class LogstashCheck(AgentCheck):
         "logstash.pipeline.plugins.filters.events.in": ("gauge", "events.in"),
         "logstash.pipeline.plugins.filters.events.out": ("gauge", "events.out"),
         "logstash.pipeline.plugins.filters.events.duration_in_millis": ("gauge", "events.duration_in_millis"),
-    }
-
-    PIPELINE_QUEUE_METRICS = {
-        "logstash.pipeline.queue.events_count": ("gauge", "queue.events_count"),
-        "logstash.pipeline.queue.queue_size_in_bytes": ("gauge", "queue.queue_size_in_bytes"),
-        "logstash.pipeline.queue.max_queue_size_in_bytes": ("gauge", "queue.max_queue_size_in_bytes"),
     }
 
     def get_instance_config(self, instance):
@@ -235,9 +232,6 @@ class LogstashCheck(AgentCheck):
         )
         self._process_pipeline_plugins_data(
             pipeline_data['plugins'], self.PIPELINE_FILTERS_METRICS, tags, 'filters', 'filter_name'
-        )
-        self._process_pipeline_plugins_data(
-            pipeline_data['queue'], self.PIPELINE_QUEUE_METRICS, tags, 'queue', 'queue_name'
         )
 
     def _process_pipeline_plugins_data(
